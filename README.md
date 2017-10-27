@@ -11,12 +11,12 @@ Capturas de pantalla
 
 Lista de reddits | Detalle reddit |
 --- | --- |
-![screenshot_1] | ![screenshot_2] |
+![reddits] | ![interna] |
 
 [APK][apk]
 
 [apk]: https://github.com/JeffersonRojas/Reddits/blob/master/Reddits.apk
 
-[screenshot_1]: https://raw.githubusercontent.com/JeffersonRojas/Reddits/master/screenshot_1.png
+[reddits]: https://raw.githubusercontent.com/JeffersonRojas/Reddits/master/reddits.jpg
 
-[screenshot_2]: https://raw.githubusercontent.com/JeffersonRojas/Reddits/master/screenshot_2.png
+[interna]: https://raw.githubusercontent.com/JeffersonRojas/Reddits/master/interna.jpg
