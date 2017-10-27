@@ -4,4 +4,6 @@
     <string name="shared_element_text" translatable="false">text</string>
     <string name="app_name">Reddits</string>
     <string name="subscribers">\u0020subscribers\n</string>
+    <string name="offline_indicator">Offline mode</string>
+    <string name="connect">CONNECT</string>
 </resources>

@@ -3,6 +3,8 @@ package com.github.jeffersonrojas.reddits.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +37,9 @@ public class Reddits extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.coordinator_layout)
+    CoordinatorLayout coordinatorLayout;
+
     ApiClient apiClient;
 
     @Override
@@ -58,10 +63,19 @@ public class Reddits extends AppCompatActivity {
     public void onRedditsResponse(RedditsResponse redditsResponse) {
         swipeRefreshLayout.setRefreshing(false);
         rvReddits.setAdapter(new RedditsAdapter(redditsResponse));
+        DataUtils.save(this, redditsResponse);
     }
 
-    public void onRedditsError(Throwable throwable) {
+    public void onRedditsError(@SuppressWarnings("unused") Throwable throwable) {
         swipeRefreshLayout.setRefreshing(false);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, getString(R.string.offline_indicator), Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(getString(R.string.connect), view -> {
+            swipeRefreshLayout.setRefreshing(true);
+            onRefresh();
+        });
+        snackbar.show();
+        RedditsResponse redditsResponse = DataUtils.load(this, RedditsResponse.class);
+        rvReddits.setAdapter(new RedditsAdapter(redditsResponse));
     }
 
     public void onRedditSelected(RedditHolder redditHolder) {
