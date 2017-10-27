@@ -75,7 +75,9 @@ public class Reddits extends AppCompatActivity {
         });
         snackbar.show();
         RedditsResponse redditsResponse = DataUtils.load(this, RedditsResponse.class);
-        rvReddits.setAdapter(new RedditsAdapter(redditsResponse));
+        if (redditsResponse != null) {
+            rvReddits.setAdapter(new RedditsAdapter(redditsResponse));
+        }
     }
 
     public void onRedditSelected(RedditHolder redditHolder) {
