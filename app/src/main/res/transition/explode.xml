@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <slide
+        android:duration="@integer/anim_duration_long"
+        android:slideEdge="end">
+
+        <targets>
+            <target android:excludeId="@+id/toolbar" />
+            <target android:excludeId="@android:id/statusBarBackground" />
+            <target android:excludeId="@android:id/navigationBarBackground" />
+        </targets>
+
+    </slide>
+
+</transitionSet>

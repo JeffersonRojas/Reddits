@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+        <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>
+        <!--
+        <item name="android:windowExitTransition">@transition/explode</item>
+        <item name="android:windowEnterTransition">@transition/explode</item>
+        -->
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+</resources>

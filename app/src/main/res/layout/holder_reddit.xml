@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="redditModel"
+            type="com.github.jeffersonrojas.reddits.models.RedditModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/parent_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_1">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/reddit_icon_size"
+            android:layout_height="@dimen/reddit_icon_size"
+            android:layout_marginEnd="@dimen/margin_1"
+            android:transitionName="@string/shared_element_icono"
+            app:loadIcon="@{redditModel.icon_img}"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{redditModel.display_name_prefixed}" />
+
+    </LinearLayout>
+
+</layout>
