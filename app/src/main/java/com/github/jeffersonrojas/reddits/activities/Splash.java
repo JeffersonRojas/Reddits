@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.jeffersonrojas.reddits.R;
@@ -20,9 +19,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(this, Reddits.class);
-            @SuppressWarnings("ConfusingArgumentToVarargsMethod")
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
-            startActivity(intent, options.toBundle());
+            startActivity(intent);
             finish();
         }, getResources().getInteger(R.integer.delay_splash));
     }

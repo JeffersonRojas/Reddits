@@ -35,7 +35,8 @@
 
         <activity
             android:name=".activities.RedditDetail"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activities.Reddits" />
 
     </application>
 

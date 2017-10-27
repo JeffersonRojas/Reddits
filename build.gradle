@@ -14,6 +14,7 @@ buildscript {
             'butterknife'   : '8.8.1'
     ]
     repositories {
+        google()
         jcenter()
     }
     dependencies {

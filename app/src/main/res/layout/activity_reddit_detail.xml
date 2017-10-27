@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="java.text.NumberFormat" />
+
         <variable
             name="redditModel"
             type="com.github.jeffersonrojas.reddits.models.RedditModel" />
@@ -25,22 +27,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleGravity="top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:titleEnabled="false">
 
-                <ImageView
-                    android:id="@+id/iv_icon"
-                    android:layout_width="@dimen/image_width"
-                    android:layout_height="@dimen/image_width"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="50dp"
-                    android:layout_marginTop="70dp"
-                    android:transitionName="@string/shared_element_icono"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="1.1"
-                    app:loadIcon="@{redditModel.icon_img}"
-                    tools:ignore="ContentDescription" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/banner_heigth"
+                        android:scaleType="centerCrop"
+                        app:loadBanner="@{redditModel.banner_img}"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/iv_icon"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_top_icon"
+                        android:transitionName="@string/shared_element_icono"
+                        app:loadIcon="@{redditModel.icon_img}"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/margin_bottom_text"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="bottom|center"
+                            android:text="@{redditModel.display_name_prefixed}"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_tittle" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_0"
+                            android:text='@{NumberFormat.getInstance().format(redditModel.subscribers) + @string/subscribers + redditModel.audience_target}'
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -50,42 +90,6 @@
                     app:layout_collapseMode="pin"
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-                <!--<RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-
-                    <LinearLayout
-                        android:layout_below="@id/iv_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:orientation="vertical"
-                        app:layout_collapseMode="pin">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="bottom|center"
-                            android:text="Nombre"
-                            android:textColor="@android:color/white"
-                            android:textSize="30sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="4dp"
-                            android:text="tag line"
-                            android:textColor="@android:color/white" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>-->
-
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
@@ -94,21 +98,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
-            app:behavior_overlapTop="30dp"
+            app:behavior_overlapTop="@dimen/overloap_behavior"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardElevation="8dp"
-                app:contentPadding="16dp">
+                android:layout_margin="@dimen/margin_1"
+                app:cardElevation="@dimen/margin_0"
+                app:contentPadding="@dimen/margin_1">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="8dp"
-                    android:textSize="18sp" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{redditModel.public_description + '\n'}"
+                        android:textSize="@dimen/text_size_content" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_content"
+                        app:loadMD="@{redditModel.description}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_content"
+                        app:loadMD="@{redditModel.submit_text}" />
+
+                </LinearLayout>
 
             </android.support.v7.widget.CardView>
 

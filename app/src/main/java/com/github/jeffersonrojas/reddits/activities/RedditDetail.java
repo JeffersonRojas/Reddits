@@ -41,6 +41,7 @@ public class RedditDetail extends AppCompatActivity {
             float percentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
             toolbar.setAlpha(percentage);
         });
+        setTitle(binding.getRedditModel().title);
     }
 
 }

@@ -1,5 +1,7 @@
 <resources>
     <string name="base_url" translatable="false">https://www.reddit.com/</string>
     <string name="shared_element_icono" translatable="false">icono</string>
+    <string name="shared_element_text" translatable="false">text</string>
     <string name="app_name">Reddits</string>
+    <string name="subscribers">\u0020subscribers\n</string>
 </resources>
